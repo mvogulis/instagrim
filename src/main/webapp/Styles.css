@@ -9,8 +9,73 @@ and open the template in the editor.
 */
 
 
-nav {
+#nav {
     text-align: left;
-    border: 2px;
-    float: right;
+    float: left;
+    line-height: 30px;
+    background-color: #6E6E6E;
+    height: 500px;
+    width: 100px;
+    padding: 5px; 
+}
+#header{
+     /*background-color: #FF9900;*/
+     background-image: url("http://www.freewebheaders.com/wordpress/wp-content/gallery/natural-abstract/corals-natural-abstract-art-header-3783.jpg");
+     font-family: "Arial Black", Gadget, sans-serif;
+     text-align: center;  
+     color: white;
+     padding: 5px;
+}
+
+body{
+    width: 100%;
+    background-color: #393939;
+}
+
+#contents{
+    width: 100%;
+    float: left;
+    height: 100%;
+    color: white;
+}
+
+#footer{
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding: 3px;
+}
+
+a:link{
+    color: white;
+    text-decoration: none;
+}
+
+a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+button{
+  background: #FF9900;
+  background-image: -webkit-linear-gradient(top, #FF9900, #FF5A09);
+  background-image: -moz-linear-gradient(top, #FF9900, #FF5A09);
+  background-image: -ms-linear-gradient(top, #FF9900, #FF5A09);
+  background-image: -o-linear-gradient(top, #FF9900, #FF5A09);
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width: 150px;
+}
+
+button:hover{
+  background: #FF5A09;
+  background-image: -webkit-linear-gradient(top, #FF5A09, #FF9900);
+  background-image: -moz-linear-gradient(top, #FF5A09, #FF9900);
+  background-image: -ms-linear-gradient(top, #FF5A09, #FF9900);
+  background-image: -o-linear-gradient(top, #FF5A09, #FF9900);
+  text-decoration: none;
 }
