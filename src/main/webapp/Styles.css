@@ -9,73 +9,160 @@ and open the template in the editor.
 */
 
 
-#nav {
-    text-align: left;
-    float: left;
-    line-height: 30px;
-    background-color: #6E6E6E;
-    height: 500px;
-    width: 100px;
-    padding: 5px; 
-}
-#header{
-     /*background-color: #FF9900;*/
-     background-image: url("http://www.freewebheaders.com/wordpress/wp-content/gallery/natural-abstract/corals-natural-abstract-art-header-3783.jpg");
-     font-family: "Arial Black", Gadget, sans-serif;
-     text-align: center;  
-     color: white;
-     padding: 5px;
+/* -----------------------
+Base styles
+------------------------*/
+
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #333;
+	background-color: #E9E9E9;
+	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+
 }
 
-body{
-    width: 100%;
-    background-color: #393939;
+h1,h2,h3,h4,h5,h6
+{
+	margin: 0 0 .5em;
+	font-weight: 500;
+	line-height: 1.1;
 }
 
-#contents{
-    width: 100%;
-    float: left;
-    height: 100%;
-    color: white;
+p
+{
+	margin: 0 0 1.5em;
+	line-height: 1.5;
+}
+hr
+{
+	height: 0;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	border: 0;
+	border-top: 1px solid #ddd;
 }
 
-#footer{
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding: 3px;
+th, td
+{
+	padding: .5em 1em;
+	vertical-align: top;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
 }
 
-a:link{
-    color: white;
-    text-decoration: none;
+a:link { color: royalblue; }
+a:visited { color: purple; }
+a:focus { color: black; }
+a:hover { color: green; }
+a:active { color: red; }
+
+/* -----------------------
+Layout styles
+------------------------*/
+
+.container
+{
+	max-width: 50em;
+	margin: 0 auto;
+	background-color: #fff;
 }
 
-a:visited{
-    color: white;
-    text-decoration: none;
+.header
+{
+	color: #fff;
+	background: #555;
+	padding: 1em 1.25em;
 }
 
-button{
-  background: #FF9900;
-  background-image: -webkit-linear-gradient(top, #FF9900, #FF5A09);
-  background-image: -moz-linear-gradient(top, #FF9900, #FF5A09);
-  background-image: -ms-linear-gradient(top, #FF9900, #FF5A09);
-  background-image: -o-linear-gradient(top, #FF9900, #FF5A09);
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 25px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  width: 150px;
+.header-heading { margin: 0; }
+
+.nav-bar
+{
+	background: #000;
+	padding: 0;
 }
 
-button:hover{
-  background: #FF5A09;
-  background-image: -webkit-linear-gradient(top, #FF5A09, #FF9900);
-  background-image: -moz-linear-gradient(top, #FF5A09, #FF9900);
-  background-image: -ms-linear-gradient(top, #FF5A09, #FF9900);
-  background-image: -o-linear-gradient(top, #FF5A09, #FF9900);
-  text-decoration: none;
+.content { padding: 1em 1.25em;}
+
+.footer
+{
+	color: #fff;
+	background: #000;
+	padding: 1em 1.25em;
+        text-align: center;
+        text-decoration: none;
+}
+
+/* -----------------------
+Nav
+------------------------*/
+
+.nav
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nav li
+{
+	display: inline;
+	margin: 0;
+}
+
+.nav a
+{
+	display: block;
+	padding: .7em 1.25em;
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid gray;
+}
+
+.nav a:link { color: white; }
+.nav a:visited { color: white; }
+
+.nav a:focus
+{
+	color: black;
+	background-color: white;
+}
+
+.nav a:hover
+{
+	color: white;
+	background-color: green;
+}
+
+.nav a:active
+{
+	color: white;
+	background-color: red;
+}
+
+/* -----------------------
+Wide styles
+------------------------*/
+
+@media (min-width: 42em)
+{
+	.header { padding: 1.5em 3em; }
+	.nav-bar { padding: 1em 3em; }
+	.content { padding: 2em 3em; height: 100vh; }
+	.footer { padding: 2em 3em; }
+	
+	.nav li
+	{
+		display: inline;
+		margin: 0 1em 0 0;
+	}
+	
+	.nav a
+	{
+		display: inline;
+		padding: 0;
+		border-bottom: 0;
+	}
 }

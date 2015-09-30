@@ -13,33 +13,39 @@
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body>
-        <header>
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        </header>
-        <nav>
-            <ul>
-                
-                <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
-            </ul>
-        </nav>
-       
-        <article>
-            <h3>Register as user</h3>
-            <form method="POST"  action="Register">
-                <ul>
-                    <li>User Name <input type="text" name="username"></li>
-                    <li>Password <input type="password" name="password"></li>
-                </ul>
-                <br/>
-                <input type="submit" value="Regidter"> 
-            </form>
+        <div class="container">
+            <div class="header">
+                <h1 class="header-heading">Instagrim!</h1>	
+                <h2>Your world in Black and White</h2>
+            </div>
+            <div class="nav-bar">
+				<ul class="nav">
 
-        </article>
-        <footer>
-            <ul>
-                <li class="footer"><a href="/Instagrim">Home</a></li>
-            </ul>
-        </footer>
+                    <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+				<div class="main">
+            <!--<article>-->
+                <h3>Register as user</h3>
+                <form method="POST"  action="Register">
+                    <ul>
+                        <li>User Name <input type="text" name="username"></li>
+                        <li>Password <input type="password" name="password"></li>
+                    </ul>
+                    <!--<br/>-->
+                    <input type="submit" value="Register"> 
+                </form>
+
+            <!--</article>-->
+                                </div></div>
+                <div class="footer">
+
+                                   <a href="/Instagrim">Home</a>
+                                    &COPY; Andy C
+                            </div>
+
+        </div>
     </body>
 </html>
