@@ -51,6 +51,7 @@
 				</div>
 			</div>
 			<div class="footer">
+                            <a href="/Instagrim">Home</a>
 				&COPY; Andy C
 
 			</div>
