@@ -15,31 +15,30 @@
     <body>
         <div class="container">
             <div class="header">
-                <h1>InstaGrim ! </h1>
+                <h1 class="header-heading"><a href="/Instagrim">Instagrim!</a></h1>
                 <h2>Your world in Black and White</h2>
             </div>
             
-           <div class="nav-bar">
-				<ul class="nav">
-                    <li class="nav"><a href="upload.jsp">Upload</a></li>
+            <div class="nav-bar">
+                <ul class="nav">
+                    <li class="nav"><a href="/Instagrim/profile.jsp">Profile</a></li>
                     <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
                 </ul>
             </div>
 
             <div class="content">
-				<div class="main">
-                <h3>File Upload</h3>
-                <form method="POST" enctype="multipart/form-data" action="Image">
-                    File to upload: <input type="file" name="upfile"><br/>
-
-                    <br/>
-                    <input type="submit" value="Press"> to upload the file!
-                </form>
-
-                                </div></div>
+                <div class="main">
+                    <h3>File Upload</h3>
+                    <form method="POST" enctype="multipart/form-data" action="Image">
+                        File to upload: <input type="file" name="upfile"><br/>
+                        <br/>
+                        <input type="submit" value="Press"> to upload the file!
+                    </form>
+                </div>
+            </div>
+            
             <div class="footer">
-                
-                    <a href="/Instagrim">Home</a>
+                <a href="/Instagrim">Home</a>
             </div>
         </div>
     </body>

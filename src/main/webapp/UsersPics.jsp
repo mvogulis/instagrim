@@ -17,44 +17,43 @@
     <body>
         <div class="container">
             <div class="header">
-        
-            <h1>InstaGrim ! </h1>
-            <h2>Your world in Black and White</h2>
-                </div>
+                <h1 class="header-heading"><a href="/Instagrim">Instagrim!</a></h1>
+                <h2>Your world in Black and White</h2>
+            </div>
 
             <div class="nav-bar">
-				<ul class="nav">
-                    <li class="nav"><a href="/Instagrim/upload.jsp">Upload</a></li>
+                <ul class="nav">
+                    <li class="nav"><a href="/Instagrim/Upload">Upload</a></li>
                     <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
                 </ul>
             </div>
 
            <div class="content">
-				<div class="main">
-                <h1>Your Pics</h1>
-            <%
-                java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
-                if (lsPics == null) {
-            %>
-            <p>No Pictures found</p>
-            <%
-            } else {
-                Iterator<Pic> iterator;
-                iterator = lsPics.iterator();
-                while (iterator.hasNext()) {
-                    Pic p = (Pic) iterator.next();
+                <div class="main">
+                    <h1>Your Pics</h1>
+                    <%
+                        java.util.LinkedList<Pic> lsPics = (java.util.LinkedList<Pic>) request.getAttribute("Pics");
+                        if (lsPics == null) {
+                    %>
+                    <p>No Pictures found</p>
+                    <%
+                    } else {
+                        Iterator<Pic> iterator;
+                        iterator = lsPics.iterator();
+                        while (iterator.hasNext()) {
+                            Pic p = (Pic) iterator.next();
 
-            %>
-            <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
+                    %>
+                    <a href="/Instagrim/Image/<%=p.getSUUID()%>" ><img src="/Instagrim/Thumb/<%=p.getSUUID()%>"></a><br/><%
 
-                }
-                }
-            %>
-                                </div></div>
-             <div class="footer">
+                        }
+                        }
+                    %>
+                </div>
+           </div>
                 
-                    <a href="/Instagrim">Home</a>
-               
+            <div class="footer"> 
+                <a href="/Instagrim">Home</a>
             </div>
         </div>
     </body>

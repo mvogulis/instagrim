@@ -69,18 +69,14 @@ public class Login extends HttpServlet {
             
         }else{
             response.sendRedirect("/Instagrim/login.jsp");
-        }
-        
+        }   
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+        view.forward(request, response);
+    }
 }
