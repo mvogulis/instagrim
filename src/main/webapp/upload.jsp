@@ -21,7 +21,6 @@
             
             <div class="nav-bar">
                 <ul class="nav">
-                    <li class="nav"><a href="/Instagrim/profile.jsp">Profile</a></li>
                     <li class="nav"><a href="/Instagrim/Images/majed">Sample Images</a></li>
                 </ul>
             </div>

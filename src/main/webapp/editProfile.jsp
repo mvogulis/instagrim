@@ -1,9 +1,8 @@
 <%-- 
-    Document   : index
-    Created on : Sep 28, 2014, 7:01:44 PM
-    Author     : Administrator
+    Document   : editProfile
+    Created on : 13-Oct-2015, 10:15:12
+    Author     : Mantis
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
@@ -23,7 +22,6 @@
             
             <div class="nav-bar">
                 <ul class="nav">
-                    
                     <%
                         
                         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
@@ -34,8 +32,6 @@
                         <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
                         <li><a href="/Instagrim/Logout">Logout</a></li>
                         <li><a href="/Instagrim/Upload">Upload</a></li>
-                        <li><a href="/Instagrim/Profile/<%=lg.getUsername()%>">Profile</a></li>
-                        <li><a href="/Instagrim/editProfile.jsp">edit prof</a></li>
                     <%}
                             }else{
                                 %>
@@ -44,18 +40,24 @@
                                     
                                      <%
                     }%>
-                </ul>
-                
+                </ul>     
             </div>
             <div class="content">
                 <div class="main">	
-                        <hr>
+                  <form method="POST"  action="Profile">
+                        <ul>
+                            <li>User name <input type="text" name="user"></li>
+                            <li>First name <input type="text" name="fName"></li>
+                            <li>Last name <input type="text" name="lName"></li>
+                            <li>Email address <input type="text" name="email"></li>
+                        </ul>
+                        <input type="submit" value="Save"> 
+                    </form>
                 </div>
             </div>
                 
             <div class="footer">
-
-                    &COPY; Andy C
+                <a href="/Instagrim">Home</a>
             </div>
         </div>
     </body>

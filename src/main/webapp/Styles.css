@@ -136,7 +136,7 @@ Wide styles
 {
 	.header { padding: 1.5em 3em; }
 	.nav-bar { padding: 1em 3em; }
-	.content { padding: 2em 3em; height: 100vh; }
+	.content { padding: 2em 3em; height: 100%; }
 	.footer { padding: 2em 3em; }
 	
 	.nav li

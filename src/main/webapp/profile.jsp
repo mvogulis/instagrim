@@ -10,8 +10,8 @@
 <html>
     <head>
         <title>Instagrim</title>
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
     </head>
     <body>
         <div class="container">
@@ -32,7 +32,6 @@
                         <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images</a></li>
                         <li><a href="/Instagrim/Logout">Logout</a></li>
                         <li><a href="/Instagrim/Upload">Upload</a></li>
-                        <li><a href="/Instagrim/profile.jsp">Profile</a></li>
                     <%}
                             }else{
                                 %>
@@ -44,8 +43,19 @@
                 </ul>     
             </div>
             <div class="content">
-                <div class="main">	
-                    <p>yep</p>
+                <div class="main">
+                    <% UserDetails ud = (UserDetails) request.getAttribute("details");
+                       String user = ud.getUser();
+                       String fName = ud.getFirstName();
+                       String lName = ud.getLastName();
+                    %>
+                    
+                    
+                    <li><b>User:</b> <%=user%></li>
+                    <li><b>First Name:</b> <%=fName%> </li>
+                    <li><b>Last Name:</b> <%=lName%> </li>
+                    <li><b>Email Address:</b> get email</li>
+                    
                 </div>
             </div>
                 

@@ -12,10 +12,13 @@ import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.core.UDTValue;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
+import java.util.Set;
 import uk.ac.dundee.computing.aec.instagrim.lib.AeSimpleSHA1;
-import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
+import uk.ac.dundee.computing.aec.instagrim.stores.*;
 
 /**
  *
@@ -36,7 +39,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrim-mv");
         PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
        
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -48,7 +51,7 @@ public class User {
         return true;
     }
     
-    public boolean IsValidUser(String username, String Password){
+    public boolean IsValidUser(String username, String Password){        
         AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();
         String EncodedPassword=null;
         try {
@@ -83,5 +86,56 @@ public class User {
         this.cluster = cluster;
     }
 
+    public UserDetails getUserDetails(String username)
+    {
+        // 1 Create session connection to db
+        // 2 Create prepared statement - Query to the db
+        // 3 Create result set
+        // 4 Create Bound statement
+        // 5 Bind any free variables in the bound statement
+        // 6 Execute the query and return result to the result set
+        // 7 Check if there are results
+        // 8 If there are loop through and get data from the result set and put into the store (if needed)
+        // 9 return store
+        Session session = cluster.connect("instagrim");
+       
+        PreparedStatement ps = session.prepare("select * from userprofiles where login =?");
+        ResultSet rs = null;
+        BoundStatement bs = new BoundStatement(ps);
+        rs = session.execute(bs.bind(username));
+        UserDetails userDetails = new UserDetails();
+        if (rs.isExhausted())
+        {
+            System.out.println("User not found - " + rs.isExhausted());
+            return null;
+        }
+        else
+        {
+            for (Row row : rs)
+            {
+                String login = row.getString("login");
+                String firstname = row.getString("first_name");
+                String lastname = row.getString("last_name");
+               
+                userDetails.setUser(login);
+                userDetails.setFirstName(firstname);
+                userDetails.setLastName(lastname);
+                //userDetails.setEmail(emails);
+            }
+        }   
+        return userDetails;
+    } 
     
+    
+    public void updateUDetails(String user, String fName, String lName)
+    {
+        Session session = cluster.connect("instagrim");
+        
+        PreparedStatement ps = session.prepare("Update userprofiles set first_name = ?, last_name = ? where login =?");
+        
+        //ResultSet rs = null;
+        BoundStatement bs = new BoundStatement(ps);
+        
+        session.execute(bs.bind(fName,lName,user));
+    }
 }
