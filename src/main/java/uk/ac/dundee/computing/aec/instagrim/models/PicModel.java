@@ -210,7 +210,41 @@ public class PicModel {
         p.setPic(bImage, length, type);
 
         return p;
-
     }
 
+     public void DeletePic(String user, java.util.UUID picid)
+     {
+         Session session = cluster.connect("instagrim");
+         
+         PreparedStatement psUser = session.prepare("SELECT user FROM pics WHERE picid = ?");
+         PreparedStatement psDelete = session.prepare("DELETE FROM pics WHERE picid = ?");
+         
+         BoundStatement bsUser = new BoundStatement(psUser);
+         BoundStatement bsDelete = new BoundStatement(psDelete);
+         
+         ResultSet rs = session.execute(bsUser.bind(picid));
+         
+         String usr = "";
+         
+        if (!rs.isExhausted()) 
+        {
+           for (Row row : rs) 
+            {  
+                usr = row.getString("user");
+            }
+        } 
+        else 
+        {
+            session.close();
+        }
+         
+        if (usr.equals(user))
+        {
+            session.execute(bsDelete.bind(picid));
+        }
+        else
+        {
+            session.close();
+        }  
+     }
 }

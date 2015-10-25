@@ -1,7 +1,7 @@
 <%-- 
-    Document   : upload
-    Created on : Sep 22, 2014, 6:31:50 PM
-    Author     : Administrator
+    Document   : profile
+    Created on : 07-Oct-2015, 15:29:42
+    Author     : Mantis
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,19 +9,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
-        <link rel="stylesheet" type="text/css" href="Styles.css" />
+        <link rel="stylesheet" type="text/css" href="/Instagrim/Styles.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
     </head>
     <body>
         <div class="container">
             <div class="header">
                 <h1 class="header-heading"><a href="/Instagrim">Instagrim!</a></h1>
-                <h2>Your world in Black and White</h2>
+                <h2>Your world in black and white</h2>
             </div>          
             <div class="nav-bar">
-                <ul class="nav">                      
-                    <% 
+                <ul class="nav">     
+                    <%
+                        
                         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                         if (lg != null) {
                             String UserName = lg.getUsername();
@@ -37,20 +38,23 @@
                                 %>
                                     <li><a href="/Instagrim/Register">Register</a></li>
                                     <li><a href="/Instagrim/Login">Login</a></li>
+                                    
                                      <%
                     }%>
-                </ul>
+                </ul>     
             </div>
             <div class="content">
                 <div class="main">
-                    <h3>File Upload</h3>
-                    <form method="POST" enctype="multipart/form-data" action="Image">
-                        File to upload: <input type="file" name="upfile"><br/>
-                        <br/>
-                        <input type="submit" value="Press"> to upload the file!
-                    </form>
+                    <% UserDetails ud = (UserDetails) request.getAttribute("details");
+                       String user = ud.getUser();
+                       String fName = ud.getFirstName();
+                       String lName = ud.getLastName();
+                    %>
+                    <li><b>User:</b> <%=user%></li>
+                    <li><b>First Name:</b> <%=fName%> </li>
+                    <li><b>Last Name:</b> <%=lName%> </li>   
                 </div>
-            </div>
+            </div>               
             <div class="footer">
                 <a href="/Instagrim">Home</a>
             </div>
