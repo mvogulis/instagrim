@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +20,9 @@ import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
  *
  * @author Mantis
  */
-public class Upload extends HttpServlet {
-    
+@WebServlet(name = "EditProfile", urlPatterns = {"/EditProfile"})
+public class EditProfile extends HttpServlet {
+
     Cluster cluster;
     
     @Override
@@ -32,9 +34,9 @@ public class Upload extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        RequestDispatcher view = request.getRequestDispatcher("upload.jsp");
-        view.forward(request, response);
+        
+        RequestDispatcher view = request.getRequestDispatcher("editProfile.jsp");
+        view.forward(request, response);  
     }
     
     @Override
@@ -42,5 +44,4 @@ public class Upload extends HttpServlet {
     {
         cluster.close();
     }
-
 }

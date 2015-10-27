@@ -42,30 +42,25 @@ Cluster cluster;
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String username = request.getParameter("user");
+        
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
         
         HttpSession session = request.getSession();
         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-        
+
+        String username = lg.getUsername();
         User user = new User();
         user.setCluster(cluster);
-        user.updateUDetails(lg.getUsername(), fName, lName);
-        response.sendRedirect("/Instagrim/Profile/" + lg.getUsername());    
+        user.updateUDetails(username, fName, lName);
+        response.sendRedirect("/Instagrim/Profile/" + username);    
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String args[] = Convertors.SplitRequestPath(request);
-        
-        // 1 Create model
-        // 2 Set Cluster of model
-        // 3 Create store
-        // 4 Populate store with data using the model
-        // 5 Set attribute which is the populated store
-        // 6 Forward to the new page well store will be used
+       
        User user = new User();
        user.setCluster(cluster);
        UserDetails ud = new UserDetails();
@@ -77,18 +72,6 @@ Cluster cluster;
        RequestDispatcher view = request.getRequestDispatcher("/profile.jsp");
        view.forward(request, response);
     }
-    
-    private void viewProfile(String userName, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = new User();
-        user.setCluster(cluster);
-        
-        UserDetails userDetails = user.getUserDetails(userName);
-        
-        request.setAttribute("details", userDetails);
-        RequestDispatcher view = request.getRequestDispatcher("/profile.jsp");
-        view.include(request, response);
-    }
-    
     
     public void destroy()
     {

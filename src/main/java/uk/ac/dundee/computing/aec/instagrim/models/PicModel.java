@@ -70,7 +70,7 @@ public class PicModel {
             byte[] processedb = picdecolour(picid.toString(),types[1]);
             ByteBuffer processedbuf=ByteBuffer.wrap(processedb);
             int processedlength=processedb.length;
-            Session session = cluster.connect("instagrim");
+            Session session = cluster.connect("instagrimvm");
 
             PreparedStatement psInsertPic = session.prepare("insert into pics ( picid, image,thumb,processed, user, interaction_time,imagelength,thumblength,processedlength,type,name) values(?,?,?,?,?,?,?,?,?,?,?)");
             PreparedStatement psInsertPicToUser = session.prepare("insert into userpiclist ( picid, user, pic_added) values(?,?,?)");
@@ -134,7 +134,7 @@ public class PicModel {
    
     public java.util.LinkedList<Pic> getPicsForUser(String User) {
         java.util.LinkedList<Pic> Pics = new java.util.LinkedList<>();
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
         PreparedStatement ps = session.prepare("select picid from userpiclist where user =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -158,7 +158,7 @@ public class PicModel {
     }
 
     public Pic getPic(int image_type, java.util.UUID picid) {
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
         ByteBuffer bImage = null;
         String type = null;
         int length = 0;
@@ -214,23 +214,27 @@ public class PicModel {
 
      public void DeletePic(String user, java.util.UUID picid)
      {
-         Session session = cluster.connect("instagrim");
+         Session session = cluster.connect("instagrimvm");
          
-         PreparedStatement psUser = session.prepare("SELECT user FROM pics WHERE picid = ?");
+         PreparedStatement psUser = session.prepare("SELECT interaction_time, user FROM pics WHERE picid = ?");
          PreparedStatement psDelete = session.prepare("DELETE FROM pics WHERE picid = ?");
+         PreparedStatement psDeleteList = session.prepare("DELETE FROM userpiclist WHERE user = ? AND pic_added = ?");
          
          BoundStatement bsUser = new BoundStatement(psUser);
          BoundStatement bsDelete = new BoundStatement(psDelete);
+         BoundStatement bsDeleteList = new BoundStatement(psDeleteList);
          
          ResultSet rs = session.execute(bsUser.bind(picid));
          
          String usr = "";
+         Date date = new Date();
          
         if (!rs.isExhausted()) 
         {
            for (Row row : rs) 
             {  
                 usr = row.getString("user");
+                date = row.getDate("interaction_time");
             }
         } 
         else 
@@ -241,6 +245,7 @@ public class PicModel {
         if (usr.equals(user))
         {
             session.execute(bsDelete.bind(picid));
+            session.execute(bsDeleteList.bind(usr, date));
         }
         else
         {

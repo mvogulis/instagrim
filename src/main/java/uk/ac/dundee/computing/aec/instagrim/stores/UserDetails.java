@@ -9,8 +9,6 @@ import com.datastax.driver.core.Cluster;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
-import java.util.Map;
-import java.util.Set;
 /**
  *
  * @author Mantis
@@ -19,7 +17,6 @@ public class UserDetails {
     private String userName;
     private String fName;
     private String lName;
-    private Set<String> emails;
     
     Cluster cluster;
     
@@ -62,17 +59,5 @@ public class UserDetails {
     public String getLastName()
     {
         return lName;
-    }
-    
-    /*public void setEmail(HashSet emails)
-    {
-        this.emails = emails;
-    }
-    
-    public Set<String> getEmails()
-    {
-        return emails;
-    }*/
-    
-    
+    }      
 }

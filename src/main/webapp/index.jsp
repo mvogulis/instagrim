@@ -32,7 +32,7 @@
                         <li><a href="/Instagrim/Logout">Logout</a></li>
                         <li><a href="/Instagrim/Upload">Upload</a></li>
                         <li><a href="/Instagrim/Profile/<%=UserName%>">Profile</a></li>
-                        <li><a href="/Instagrim/editProfile.jsp">edit prof</a></li>
+                        <li><a href="/Instagrim/EditProfile">Edit profile</a></li>
                     <%}
                             }else{
                                 %>
@@ -48,7 +48,7 @@
                 </div>
             </div>     
             <div class="footer">
-                &COPY; Andy C and Mantas V
+                &COPY; Andy C & Mantas V
             </div>
         </div>
     </body>

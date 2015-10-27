@@ -17,7 +17,7 @@
         <div class="container">
             <div class="header">
                 <h1 class="header-heading"><a href="/Instagrim">Instagrim!</a></h1>
-                <h2>Your world in black and white</h2>
+                <h2>Your world in Black and White</h2>
             </div>          
             <div class="nav-bar">
                 <ul class="nav">     
@@ -32,7 +32,7 @@
                         <li><a href="/Instagrim/Logout">Logout</a></li>
                         <li><a href="/Instagrim/Upload">Upload</a></li>
                         <li><a href="/Instagrim/Profile/<%=UserName%>">Profile</a></li>
-                        <li><a href="/Instagrim/editProfile.jsp">edit prof</a></li>
+                        <li><a href="/Instagrim/EditProfile">Edit profile</a></li>
                     <%}
                             }else{
                                 %>

@@ -39,7 +39,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
         PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
        
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -60,7 +60,7 @@ public class User {
             System.out.println("Can't check your password");
             return false;
         }
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
         PreparedStatement ps = session.prepare("select password from userprofiles where login =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
@@ -88,16 +88,7 @@ public class User {
 
     public UserDetails getUserDetails(String username)
     {
-        // 1 Create session connection to db
-        // 2 Create prepared statement - Query to the db
-        // 3 Create result set
-        // 4 Create Bound statement
-        // 5 Bind any free variables in the bound statement
-        // 6 Execute the query and return result to the result set
-        // 7 Check if there are results
-        // 8 If there are loop through and get data from the result set and put into the store (if needed)
-        // 9 return store
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
        
         PreparedStatement ps = session.prepare("select * from userprofiles where login =?");
         ResultSet rs = null;
@@ -120,7 +111,6 @@ public class User {
                 userDetails.setUser(login);
                 userDetails.setFirstName(firstname);
                 userDetails.setLastName(lastname);
-                //userDetails.setEmail(emails);
             }
         }   
         return userDetails;
@@ -129,9 +119,9 @@ public class User {
     
     public void updateUDetails(String user, String fName, String lName)
     {
-        Session session = cluster.connect("instagrim");
+        Session session = cluster.connect("instagrimvm");
         
-        PreparedStatement ps = session.prepare("Update userprofiles set first_name = ?, last_name = ? where login =?");
+        PreparedStatement ps = session.prepare("UPDATE userprofiles SET first_name = ?, last_name = ? WHERE login =?");
         
         BoundStatement bs = new BoundStatement(ps);
         

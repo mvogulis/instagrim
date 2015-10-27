@@ -21,7 +21,7 @@
             
             <div class="nav-bar">
                 <ul class="nav">
-                    <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
+                    <li><a href="/Instagrim/Login">Login</a></li>
                 </ul>
             </div>
             <div class="content">
@@ -29,9 +29,9 @@
                     <h3>Register as user</h3>
                         <form method="POST"  action="Register">
                             <ul>
-                                <li>User Name <input type="text" name="username"></li>
-                                <li>Password <input type="password" name="password"></li>
-                                <li>Repeat password <input type="password" name="password1"></li>
+                                <li>User Name <input type="text" name="username" required></li>
+                                <li>Password <input type="password" name="password" required></li>
+                                <li>Repeat password <input type="password" name="password1" required></li>
                             </ul>
                             <input type="submit" value="Register"> 
                         </form>
